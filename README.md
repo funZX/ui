@@ -1,6 +1,6 @@
 # NvChad UI Plugin 
 
-This ui plugin is a collection of many UI modules like statusline, tabline, cheatsheet, nvdash and much more!
+This ui plugin is a collection of many UI modules like statusline, tabline and much more!
 - Docs at `:h nvui` 
 
 ## Install
@@ -92,12 +92,6 @@ Base46 setup
 ![image](https://github.com/user-attachments/assets/49d88e64-e185-4992-adde-c5e815a53975)
 ![image](https://github.com/user-attachments/assets/d80bb30a-f18f-44a5-8034-78a3bd2c2c17)
 
-## Nvdash
-
-- 150 ~ LOC Dashboard module, minimal & nothing fancy!
- 
-![nvdash](https://github.com/user-attachments/assets/072c8733-8a44-4cf3-8732-e5fa7eb9459e)
-
 ## Cmp styles
 
 - A lot of cmp theming with base46!
@@ -117,27 +111,6 @@ Base46 setup
 - With 3 different styles : bordered, compact, flat
 
 ![image](https://github.com/user-attachments/assets/897e46f1-9ae2-4cc2-8fa2-64eff40a90dd)
-
-## NvCheatsheet
-
-- Auto-generated mappings cheatsheet module, which has a similar layout to that of CSS's masonry layout.
-- It has 2 themes ( grid & simple )
-![img](https://nvchad.com/features/nvcheatsheet.webp)
-
-## Automatic Mason install 
-
-- MasonInstallAll command will now capture all the mason tools from your config
-- Supported plugins are : lspconfig, nvim-lint, conform.nvim
-- So for example if you have lspconfig like this :
-
-```lua 
-require("lspconfig").html.setup{}
-require("lspconfig").clangd.setup{}
-``` 
- 
-Then running MasonInstallAll will install both the mason pkgs 
-
-check `:h nvui.mason` for more info
 
 # Credits
 

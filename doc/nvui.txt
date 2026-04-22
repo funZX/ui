@@ -44,10 +44,8 @@ CONTENTS                                                         *nvui.contents*
     9.1 Base46 Themes                                 |nvui.telescope.themes|
     9.2 Term Picker                                   |nvui.telescope.terms|
 
- 10. `Cheatsheet`                                       |nvui.cheatsheet|
- 11. `Cmp UI`                                           |nvui.cmp|
- 12. `Mason`                                            |nvui.mason|
- 13. `Modern Theme picker`                              |nvui.theme-picker|
+ 10. `Cmp UI`                                           |nvui.cmp|
+ 11. `Modern Theme picker`                              |nvui.theme-picker|
 
 ==============================================================================
 1. Introduction                                                     *nvui.intro*
@@ -170,31 +168,7 @@ nvconfig file : |https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua|
      }, 
    },
 
-   nvdash = {
-     load_on_startup = false,
 
-     header = {
-       "                            ",
-       "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
-       "   ▄▀███▄     ▄██ █████▀    ",
-       "   ██▄▀███▄   ███           ",
-       "   ███  ▀███▄ ███           ",
-       "   ███    ▀██ ███           ",
-       "   ███      ▀ ███           ",
-       "   ▀██ █████▄▀█▀▄██████▄    ",
-       "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
-       "                            ",
-       "     Powered By  eovim    ",
-       "                            ",
-     },
-
-     buttons = {
-       { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
-       { txt = "  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
-       -- more... check nvconfig.lua file for full list of buttons
-     },
-   }
- 
    term = {
      base46_colors = true,
      winopts = { number = false },
@@ -211,13 +185,6 @@ nvconfig file : |https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua|
  
    lsp = { signature = true },
  
-   cheatsheet = {
-     theme = "grid", -- simple/grid
-     excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
-   },
-
-   mason = { pkgs = {}, skip = {} },
-
    colorify = {
      enabled = true,
      mode = "virtual", -- fg, bg, virtual
@@ -686,25 +653,7 @@ Command : `Telescope themes`
 Command : `Telescope terms`
 
 ==============================================================================
-10. Cheatsheet                                                 *nvui.cheatsheet*
-
-This shows mappings in a pretty cheatsheet format on the buffer
->lua
- M.cheatsheet = {
-   theme = "grid", -- simple/grid
-   excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
- }
-<
-Notes:
-
-- The excluded_groups will remove that group's column from the cheatsheet. 
-
-- For example `terminal` there will remove all columns which had the name "terminal"
-  in it (with modename removed) `"terminal (t)"` removes the terminal column 
-  which had |(t)| in it.
-
-==============================================================================
-11. Cmp UI                                                            *nvui.cmp*
+10. Cmp UI                                                            *nvui.cmp*
 
 These are the default options for cmp UI
 >lua
@@ -726,23 +675,7 @@ These are the default options for cmp UI
  require("cmp").setup(options)
 
 ==============================================================================
-12. Mason                                                           *nvui.mason*
-
-- `MasonInstallAll` command installs all mason packages.
-- It reads tools from various plugin configs and installs them.
-
-for example if you configured clangd in your lspconfig, then it will install 
-clangd too. You dont have to manually go to mason and install it.
-
-- Currently supported plugins : `lspconfig, conform, nvim-lint`
-- You can explicitly add packages in M.mason.pkgs of your chadrc
-
-NOTE: API
->lua
- require("nvchad.mason").install_all()
-
-==============================================================================
-13. Modern Theme picker                                      *nvui.theme-picker*
+11. Modern Theme picker                                      *nvui.theme-picker*
 
 - This is a theme picker created from volt ui library! 
 - It has 3 styles, `compact`, `minimal` & `default`

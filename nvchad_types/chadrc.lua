@@ -5,10 +5,7 @@
 ---@field base46? Base46Config
 ---@field lsp? NvLspConfig
 ---@field term? TermConfig
----@field cheatsheet? NvCheatsheetConfig
----@field mason? MasonConfig
 ---@field colorify? ColorifyConfig
----@field nvdash? NvDashConfig
 
 ---@class Base46Config
 --- List of highlights group to add.
@@ -117,26 +114,6 @@
 --- ```
 ---@field modules? table<string, fun(): string>
 
----@class NvDashConfig
---- Whether to open dashboard on opening nvim
----@field load_on_startup? boolean
---- Your ascii art
---- Each string is one line
----@field header? string[] | (fun(): string[])
---- List of buttons to show on the dashboard
----@field buttons? NvDashButtonConfig[]
-
----@class NvDashButtonConfig
----@field txt string | (fun(): string) # Descrption of the button
----@field hl? string name of the highlight group
----@field no_gap? boolean true by default, this wont make next line empty
----@field rep? boolean used to repeat txt till space available, use only when txt is 1 char
-
----@class NvCheatsheetConfig
---- Cheatsheet theme
----@field theme? '"grid"'|'"simple"'
----@field excluded_groups? string[]
-
 ---Options for NvChad/ui lsp configuration
 ---@class NvLspConfig
 ---@field signature? boolean showing LSP function signatures as you type
@@ -161,7 +138,6 @@
 ---@field sizes? TermSizes
 ---@field float? TermFloat
 
----@class MasonConfig
 ---@field command? boolean
 ---@field pkgs? string[]
 
