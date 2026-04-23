@@ -4,11 +4,6 @@
 
 return {
   {
-    "hrsh7th/nvim-cmp",
-    enabled = false,
-  },
-
-  {
     "saghen/blink.cmp",
     version = "1.*",
     event = { "InsertEnter", "CmdLineEnter" },
