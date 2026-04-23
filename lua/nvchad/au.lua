@@ -43,11 +43,4 @@ local dir = vim.fn.stdpath "data" .. "/nvnotify1"
 
 if not vim.uv.fs_stat(dir) then
   vim.fn.mkdir(dir, "p")
-  require "nvchad.winmes" {
-    { "* Blink.cmp plugin integration has been added, will be tested for 2 months" },
-    { " " },
-    { '* { import = "nvchad.blink.lazyspec" } in your plugins file' },
-    { " " },
-    { "* Discuss at https://github.com/NvChad/NvChad/discussions/3244" },
-  }
 end
