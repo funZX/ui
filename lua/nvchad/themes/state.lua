@@ -5,9 +5,9 @@ local M = {
   index = 1,
 
   limit = {
-    compact = 6,
-    flat = 5,
-    bordered = 6,
+    compact = 5,
+    flat = 4,
+    bordered = 5,
   },
 
   start_row = 1,
