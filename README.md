@@ -29,7 +29,6 @@ In your plugins file
  },
 
  "nvchad/volt", -- optional, needed for theme switcher
- -- or just use Telescope themes
 ```
 
 Base46 setup
@@ -64,12 +63,6 @@ Base46 setup
 - Statusline with 4 different styles
 
 ![nvchad statusline](https://nvchad.com/features/statuslines.webp)
-
-## Term 
-
-- Create, toggle terminals with cmd, window options ( can also be used to color each term window differently! )
-- Manage code runner 
-- ( :Telescope terms ) to unhide [terminal buffers](https://www.youtube.com/embed/3DysWI_6YpQ) <kbd> leader + pt </kbd>.
 
 ## Lsp Signature
 

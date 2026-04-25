@@ -40,12 +40,8 @@ CONTENTS                                                         *nvui.contents*
 
  8. `Colorify`                                          |nvui.colorify|
  
- 9. `Telescope Extensions`                              |nvui.telescope|
-    9.1 Base46 Themes                                 |nvui.telescope.themes|
-    9.2 Term Picker                                   |nvui.telescope.terms|
-
- 10. `Cmp UI`                                           |nvui.cmp|
- 11. `Modern Theme picker`                              |nvui.theme-picker|
+ 9. `Cmp UI`                                           |nvui.cmp|
+10. `Modern Theme picker`                              |nvui.theme-picker|
 
 ==============================================================================
 1. Introduction                                                     *nvui.intro*
@@ -144,8 +140,6 @@ nvconfig file : |https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua|
          lsp = true,
        },
      },
- 
-     telescope = { style = "borderless" }, -- borderless / bordered
  
      statusline = {
        enabled = true,
@@ -563,7 +557,7 @@ To edit an already existing theme, use `base46.changed_themes` option.
 6.4 Base46 integrations                               *nvui.base46.integrations*
 
 An integration file is a group of highlight groups, for example cmp
-integration, telescope etc.
+integration etc.
 
 There are many integration files but only few are compiled by default, to 
 include other ones, use `base46.integrations` option
@@ -577,19 +571,6 @@ include other ones, use `base46.integrations` option
 
  `dofile(vim.g.base46_cache .. "dap")`
 
-Note: 
-
-It's preferred to put the dofile code in your plugin's config func
->lua
- {
-   "folke/trouble.nvim",
-    cmd = "Trouble",
-    config = function()
-       dofile(vim.g.base46_cache .. "trouble")
-       require("trouble").setup()
-    end
- }
-<
 ------------------------------------------------------------------------------
 6.5 Local themes		                      *nvui.base46.local_themes*
 
@@ -631,29 +612,7 @@ for example from tailwind, css lsp etc
  }, 
 
 ==============================================================================
-9. Telescope extensions                                         *nvui.telescope*
-
-There are 2 telescope extensions available : themes, terms
-
-------------------------------------------------------------------------------
-9.1 Base46 themes                                       *nvui.telescope.themes*
-
-- This will list all base46 themes in telescope window and cycling over them
-  will change themes on fly, pressing enter will save the theme to chadrc.lua
-
-Command : `Telescope themes`
-
-------------------------------------------------------------------------------
-9.2 Term picker                                          *nvui.telescope.terms*
-
-- Terminals closed with |require("nvchad.tabufline").close_buffer()| will be
-  hidden, you can check `Telescope terms` command to view them back and
-  pressing |enter| or |C-v| or |C-x| will unhide the terminal.
-
-Command : `Telescope terms`
-
-==============================================================================
-10. Cmp UI                                                            *nvui.cmp*
+9. Cmp UI                                                            *nvui.cmp*
 
 These are the default options for cmp UI
 >lua
@@ -675,7 +634,7 @@ These are the default options for cmp UI
  require("cmp").setup(options)
 
 ==============================================================================
-11. Modern Theme picker                                      *nvui.theme-picker*
+10. Modern Theme picker                                      *nvui.theme-picker*
 
 - This is a theme picker created from volt ui library! 
 - It has 3 styles, `compact`, `minimal` & `default`
