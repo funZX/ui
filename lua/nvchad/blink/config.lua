@@ -5,7 +5,17 @@ local opts = {
   cmdline = { enabled = true },
   appearance = { nerd_font_variant = "normal" },
   fuzzy = { implementation = "prefer_rust" },
-  sources = { default = { "lsp", "snippets", "buffer", "path", "copilot" } },
+  sources = {
+    default = { "lsp", "snippets", "buffer", "path", "copilot" },
+    providers = {
+      copilot = {
+        name = "copilot",
+        module = "blink-cmp-copilot",
+        score_offset = 100,
+        async = true,
+      },
+    },
+  },
 
   keymap = {
     preset = "default",

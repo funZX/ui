@@ -9,6 +9,7 @@ return {
     event = { "InsertEnter", "CmdLineEnter" },
 
     dependencies = {
+      "giuxtaposition/blink-cmp-copilot",
       "rafamadriz/friendly-snippets",
       {
         -- snippet plugin
