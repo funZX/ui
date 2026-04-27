@@ -22,26 +22,21 @@ CONTENTS                                                         *nvui.contents*
  
  4. `Statusline`                                        |nvui.statusline|
  
- 5. `Term`                                              |nvui.term|
-    5.1 New Window                                    |nvui.term.new|
-    5.2 Toggle Window                                 |nvui.term.toggle|
-    5.3 Code Runner                                   |nvui.term.runner|
- 
- 6. `Base46 Theming`                                    |nvui.base46|
-    6.1 Api                                           |nvui.base46.api|
-    6.2 Highlight Override                            |nvui.base46.highlights|
-    6.3 Customize Themes                              |nvui.base46.edit_themes|
-    6.4 Integrations                                  |nvui.base46.integrations|
-    6.5 Local Themes                                  |nvui.base46.local_themes|
+ 5. `Base46 Theming`                                    |nvui.base46|
+    5.1 Api                                           |nvui.base46.api|
+    5.2 Highlight Override                            |nvui.base46.highlights|
+    5.3 Customize Themes                              |nvui.base46.edit_themes|
+    5.4 Integrations                                  |nvui.base46.integrations|
+    5.5 Local Themes                                  |nvui.base46.local_themes|
 
- 7. `Lsp`                                               |nvui.lsp|
-    7.1 Signature Help                                |nvui.lsp.signature|
-    7.2 Renamer                                       |nvui.lsp.renamer|
+ 6. `Lsp`                                               |nvui.lsp|
+    6.1 Signature Help                                |nvui.lsp.signature|
+    6.2 Renamer                                       |nvui.lsp.renamer|
 
- 8. `Colorify`                                          |nvui.colorify|
+ 7. `Colorify`                                          |nvui.colorify|
  
- 9. `Cmp UI`                                           |nvui.cmp|
-10. `Modern Theme picker`                              |nvui.theme-picker|
+ 8. `Cmp UI`                                           |nvui.cmp|
+ 9. `Modern Theme picker`                              |nvui.theme-picker|
 
 ==============================================================================
 1. Introduction                                                     *nvui.intro*
@@ -162,21 +157,6 @@ nvconfig file : |https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua|
      }, 
    },
 
-
-   term = {
-     base46_colors = true,
-     winopts = { number = false },
-     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
-     float = {
-       relative = "editor",
-       row = 0.3,
-       col = 0.25,
-       width = 0.5,
-       height = 0.4,
-       border = "single",
-     },
-   }, 
- 
    lsp = { signature = true },
  
    colorify = {
@@ -308,107 +288,7 @@ Order: ~
     `https://github.com/NvChad/ui/blob/v3.0/lua/nvchad/stl/utils.lua`
 
 ==============================================================================
-5. Term                                                              *nvui.term*
-
-Terminal module with useful functions to spawn & toggle terminals at different
-positions & with commands 
-
-This config applies for all terminals opened through our term functions:
->lua
- M.term = {
-   winopts = { number = false },
-   sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
-   float = {
-     row = 0.3, col = 0.25,
-     width = 0.5, height = 0.4,
-     border = "single",
-   },
- }
-<
-Currently only these positions are supported 
-
-- `"sp", "vsp", "bo sp", "bo vsp"` and float is an exception
-- sp and vsp are horizontal/vertical splits
-- `bo` before their commands makes them occupy full width or height of vim
-  window, check |bo|
-
-winopts: ~
- - These are used for setting window options for the terminal window.
- - In the above example, |winhl| is used, which can be used to color the
-   terminal window differently.
-
-------------------------------------------------------------------------------
-5.1 Terminal API                                                 *nvui.term.api*
-
-These are functions which open the terminal based on options provided.
-
-Available options are: 
->lua
- {
-   pos = "sp", -- sp/vsp/float
-   cmd = "neofetch" -- string or function 
-   size = 0.5 -- # for split windows only
-   winopts = {}, -- window options
-   id =  "any string" -- needed for toggle/runner func
-   float_opts = {} -- # for floating window only, options of :h nvim_open_win 
-   clear_cmd = true -- needed for runner func*
- }
-<
-------------------------------------------------------------------------------
-5.2 New Window                                                   *nvui.term.new*
->lua
- require("nvchad.term").new { pos = "sp", size = 0.3 }
- require("nvchad.term").new { pos = "vsp", cmd = "neofetch"}
-<
--------------------------------------------------------------------------------
-5.3 Toggle Window                                              *nvui.term.toggle*
-
-This function toggles the terminal window, make sure to provide an unique id.
->lua
- require("nvchad.term").toggle { pos = "sp", id = "xz" }
- require("nvchad.term").toggle { pos = "float", id = "fa", cmd ='lazygit' }
- require("nvchad.term").toggle { pos = "vsp", id = "floo", size = 0.3 }
-
- -- always map it in "t" i.e terminal mode too
- vim.keymap.set({ "n", "t" }, "<A-i>", function()
-     require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
- end)
-<
--------------------------------------------------------------------------------
-5.4 Code Runner                                                *nvui.term.runner*
-
-This function will first open a terminal + runs the cmd.
-Calling it again will run the cmd in that terminal window
->lua
- require("nvchad.term").runner {
-    pos = "vsp",
-    cmd = "python test.py",
-    id = "ekk",
-    clear_cmd = false
- }
-<
-NOTE:
-
-As Cmd can be a function too, here's a complex example :
->lua
- require("nvchad.term").runner {
-   id = "boo",
-   pos = "sp",
-
-   cmd = function()
-     local file = vim.fn.expand "%"
-
-     local ft_cmds = {
-       python = "python3 " .. file,
-       cpp = "clear && g++ -o out " .. file .. " && ./out",
-     }
-
-     return ft_cmds[vim.bo.ft]
-   end,
- }
-<
-==============================================================================
-6. Base46 theming                                                  *nvui.base46*
+5. Base46 theming                                                  *nvui.base46*
 
 			     How does it work?
                              ─────────────────
@@ -463,7 +343,7 @@ Note: You can load all cache files at once instead of lazyloading them
  end
 <
 ------------------------------------------------------------------------------
-6.1 Base46 API                                                 *nvui.base46.api*
+5.1 Base46 API                                                 *nvui.base46.api*
 
 Get theme colors: ~
 >lua
@@ -504,7 +384,7 @@ Setting themes outside of Neovim: ~
  done
 
 ------------------------------------------------------------------------------
-6.2 Highlight override                                  *nvui.base46.highlights*
+5.2 Highlight override                                  *nvui.base46.highlights*
 
 - Make sure you use a valid highlight group.
 - Check your theme colors in the base46 theme dir
@@ -535,7 +415,7 @@ Setting themes outside of Neovim: ~
 - To add new highlight groups, use |hl_add|
 
 ------------------------------------------------------------------------------
-6.3 Customize themes                                   *nvui.base46.edit_themes*
+5.3 Customize themes                                   *nvui.base46.edit_themes*
 
 To edit an already existing theme, use `base46.changed_themes` option.
 >lua
@@ -554,7 +434,7 @@ To edit an already existing theme, use `base46.changed_themes` option.
  }
 <
 ------------------------------------------------------------------------------
-6.4 Base46 integrations                               *nvui.base46.integrations*
+5.4 Base46 integrations                               *nvui.base46.integrations*
 
 An integration file is a group of highlight groups, for example cmp
 integration etc.
@@ -580,10 +460,10 @@ include other ones, use `base46.integrations` option
 |https://github.com/nvchad/base46#understanding-theme-variables|
 
 ==============================================================================
-7. LSP                                                                *nvui.lsp*
+6. LSP                                                                *nvui.lsp*
 
 ------------------------------------------------------------------------------
-7.1 Signature Help                                          *nvui.lsp.signature*
+6.1 Signature Help                                          *nvui.lsp.signature*
 
 50 ~ LOC auto-signature previewer whenever inside a function,
 >lua
@@ -592,14 +472,14 @@ include other ones, use `base46.integrations` option
  }
 <
 ------------------------------------------------------------------------------
-7.2 Renamer                                                   *nvui.lsp.renamer*
+6.2 Renamer                                                   *nvui.lsp.renamer*
 
 This is a function will will rename variable under cursor
 >lua
  require "nvchad.lsp.renamer"()
 
 ==============================================================================
-8. Colorify			                                 *nvui.colorify*
+7. Colorify			                                 *nvui.colorify*
 
 This module will colorize hex codes in the buffer as well as lsp variables
 for example from tailwind, css lsp etc
@@ -612,7 +492,7 @@ for example from tailwind, css lsp etc
  }, 
 
 ==============================================================================
-9. Cmp UI                                                            *nvui.cmp*
+8. Cmp UI                                                            *nvui.cmp*
 
 These are the default options for cmp UI
 >lua
@@ -634,7 +514,7 @@ These are the default options for cmp UI
  require("cmp").setup(options)
 
 ==============================================================================
-10. Modern Theme picker                                      *nvui.theme-picker*
+ 9. Modern Theme picker                                      *nvui.theme-picker*
 
 - This is a theme picker created from volt ui library! 
 - It has 3 styles, `compact`, `minimal` & `default`
